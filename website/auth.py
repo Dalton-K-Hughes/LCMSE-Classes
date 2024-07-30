@@ -1,6 +1,7 @@
 import os
 from dotenv import load_dotenv
 from flask import Blueprint, flash, redirect, render_template, request, url_for
+import flask
 from . import db
 from .models import User
 from .forms import LoginForm, SignUpForm
@@ -21,6 +22,7 @@ def login():
         if user and check_password_hash(user.password, password):
             login_user(user, remember=True)
             flash('Login Successful!')
+            next = flask.request.args.get('next')
             return redirect(url_for())
         else:
             flash('Invalid username or password!')
@@ -49,6 +51,6 @@ def signup():
 def logout():
     logout_user()
     flash('You have been logged out!')
-    return redirect(url_for('auth.login'))
+    return redirect(url_for('auth.login')) 
         
 
