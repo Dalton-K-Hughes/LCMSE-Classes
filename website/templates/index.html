@@ -1,0 +1,16 @@
+{% extends 'base.html '%}
+
+{% block title %}Welcome to Class!{% endblock title %}
+
+{% block content %}
+
+<div class='container'>
+    <div>
+        <h1 class="display-1">Welcome to Mr. Hughes's Class!</h1>
+            <br>
+        <p class="lead">If this is your first day in class, <br>please <a href="{{ url_for('auth.signup') }}">sign up</a> to create your account,
+            <br>otherwise, <a href="{{ url_for('auth.login') }}">login</a> to continue.</p>
+    </div>
+</div>
+
+{% endblock content %}
